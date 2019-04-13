@@ -15,7 +15,6 @@ namespace BankAccounts
         private string m_customerName;
         private double m_balance;
         private bool m_frozen = false;
-
         private BankAccount()
         {
 
@@ -32,6 +31,23 @@ namespace BankAccounts
         public double Balance
         {
             get { return m_balance; }
+        }
+        public void Debit(double amount)
+        {
+            if (m_frozen)
+            {
+                throw new Exception("Account Frozen");
+            }
+            if (amount > m_balance)
+            {
+                throw new ArgumentOutOfRangeException("amount");
+
+            }
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException("amount");
+            }
+            m_balance += amount;//intentionally incorrect code
         }
     }
 }
