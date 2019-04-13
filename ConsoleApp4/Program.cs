@@ -11,7 +11,6 @@ namespace BankAccounts
 
     public class BankAccount
     {
-
         private string m_customerName;
         private double m_balance;
         private bool m_frozen = false;
@@ -61,5 +60,22 @@ namespace BankAccounts
             }
             m_balance += amount;
         }
+        private void FreezeAccount()
+        {
+            m_frozen = true;
+        }
+        private void UnfreezeAccount()
+        {
+            m_frozen = false;
+        }
+        public static void Main()
+        {
+            BankAccount ba = new BankAccount("Mr.BRYan Walton", 11.99);
+            ba.Credit(5.77);
+            ba.Debit(11.22);
+            Console.WriteLine("Current balance is ${0}", ba.Balance);
+            Console.ReadLine();
+        }
     }
+
 }
